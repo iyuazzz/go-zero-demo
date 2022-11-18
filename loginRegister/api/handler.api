@@ -1,0 +1,25 @@
+type (
+	LoginReq {
+		Name string `json:"name"`
+		Pwd  string `json:"pwd"`
+	}
+	LoginRes {
+		Ret    string `json:"result"`
+		Reason string `json:"reason"`
+	}
+
+	RegisterReq {
+		Name string `json:"name"`
+		Pwd  string `json:"pwd"`
+	}
+	RegisterRes {
+		Ret    string `json:"result"`
+		Reason string `json:"reason"`
+	}
+)
+service Login {
+	@handler login
+	post /api/login (LoginReq) returns (LoginRes)
+	@handler register
+	post /api/register (RegisterReq) returns (RegisterRes)
+}
