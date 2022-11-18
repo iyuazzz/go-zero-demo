@@ -27,14 +27,20 @@ func NewLoginLogic(ctx context.Context, svcCtx *svc.ServiceContext) *LoginLogic 
 
 func (l *LoginLogic) Login(req *types.LoginReq) (resp *types.LoginRes, err error) {
 	user, err := l.svcCtx.UserModel.FindOneByName(context.Background(), req.Name)
+	resp = &types.LoginRes{
+		Ret: "fail to login",
+	}
 	if err != nil {
 		if err == model.ErrNotFound {
 			err = fmt.Errorf("wrong user name, cant find")
 		}
-		return nil, err
+		resp.Reason = err.Error()
+		return resp, err
 	}
 	if user.Pwd != req.Pwd {
-		return nil, fmt.Errorf("wrong password for user (%s)", req.Name)
+		err = fmt.Errorf("wrong password for user (%s)", req.Name)
+		resp.Reason = err.Error()
+		return resp, err
 	}
 	resp = &types.LoginRes{
 		Ret: fmt.Sprintf("success Login! hello %s ~", user.Name),

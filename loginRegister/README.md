@@ -29,11 +29,11 @@ goctl model mongo --type User --dir .
 mkdir api && cd api
     编写 handler.api
 goctl api go -api handler.api -dir .
-    实现 ./internal/logic/* 的逻辑
-    默认的FindOne根据id查询，可以修改filter改为根据name查询
-    
 vim ./internal/svc/servicecontext.go 
     context内添加 mongo
+实现 ./internal/logic/* 的逻辑
+    默认的FindOne根据id查询，可以修改filter改为根据name查询
+
 
 # 运行服务
 cd api
@@ -42,3 +42,6 @@ go run login.go -f etc/login.yaml
 [mongoDB](https://www.runoob.com/mongodb/mongodb-tutorial.html)
 
 [go-zero](https://legacy.go-zero.dev/cn/micro-service.html)
+
+### 测试
+![](lib/test.jpg)
