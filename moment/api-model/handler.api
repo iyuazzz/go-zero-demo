@@ -1,0 +1,47 @@
+type (
+	GetTokenReq {
+		UserId string `json:"id"`
+	}
+	GetTokenRep {
+		Token  string `json:"token"`
+		Result string `json:"result"`
+	}
+
+	CreateMomentReq {
+		Title string `json:"title"`
+		Text  string `json:"text"`
+		Token string `json:"token"`
+	}
+	CreateMomentRep {
+		Result string `json:"result"`
+	}
+
+	GetMomentReq {
+		Id    string `json:"id"`
+		Token string `json:"token"`
+	}
+	GetMomentRep {
+		Title  string `json:"title"`
+		Text   string `json:"text"`
+		Result string `json:"result"`
+	}
+
+	DelMomentReq {
+		Id    string `json:"id"`
+		Token string `json:"token"`
+	}
+	DelMomentRep {
+		Result string `json:"result"`
+	}
+)
+
+service apiService {
+	@handler get_token
+	post /api/get_token (GetTokenReq) returns (GetTokenRep)
+	@handler create_moment
+	post /api/create_moment (CreateMomentReq) returns (CreateMomentRep)
+	@handler get_moment
+	post /api/get_moment (GetMomentReq) returns (GetMomentRep)
+	@handler del_moment
+	post /api/del_moment (DelMomentReq) returns (DelMomentRep)
+}

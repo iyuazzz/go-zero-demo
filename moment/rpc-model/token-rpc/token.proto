@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package token;
+
+option go_package = "./token";
+
+message TokenRequest {
+  string id = 1;
+}
+message TokenReply {
+  string token = 1;
+  string result = 2;
+}
+service Token {
+  rpc getToken(TokenRequest) returns(TokenReply);
+}

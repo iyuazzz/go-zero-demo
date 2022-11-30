@@ -1,0 +1,9 @@
+Name: apiService
+Host: 0.0.0.0
+Port: 8888
+TokenRpc:
+  Endpoints:
+    - 127.0.0.1:8083
+MomentRpc:
+  Endpoints:
+    - 127.0.0.1:8084

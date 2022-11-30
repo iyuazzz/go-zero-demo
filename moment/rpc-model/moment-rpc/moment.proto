@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package moment;
+
+option go_package = "./moment";
+
+message CreateMomentRequest {
+  string title = 1;
+  string text = 2;
+  string token = 3;
+}
+message CreateMomentReply {
+  string result = 1;
+}
+
+message GetMomentRequest {
+  string id = 1;
+  string token = 3;
+}
+message GetMomentReply {
+  string title = 1;
+  string text = 2;
+  string result = 3;
+}
+
+message DelMomentRequest {
+  string id = 1;
+  string token = 2;
+}
+message DelMomentReply {
+  string result = 1;
+}
+
+
+service Moment {
+  rpc createMoment(CreateMomentRequest) returns(CreateMomentReply);
+  rpc getMoment(GetMomentRequest) returns(GetMomentReply);
+  rpc delMoment(DelMomentRequest) returns(DelMomentReply);
+}

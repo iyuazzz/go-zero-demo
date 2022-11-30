@@ -1,0 +1,6 @@
+Name: moment.rpc
+ListenOn: 0.0.0.0:8084
+
+# mysql config
+DataSource: xxx # 脱敏
+Table: moment
